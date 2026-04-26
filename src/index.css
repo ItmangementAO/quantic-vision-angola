@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", sans-serif;
+
+  --color-quantic-petrol: #0A191E;
+  --color-quantic-teal: #00A3A1;
+  --color-quantic-blue: #0076B6;
+  --color-quantic-grey: #F4F7F6;
+  
+  /* Legacy compatibility / Mapping */
+  --color-quantic-dark: #0A191E;
+  --color-quantic-amber: #00A3A1; /* Mapping amber to Teal as requested for CTA */
+  
+  --shadow-quantic-premium: 0 10px 30px -5px rgba(10, 25, 30, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-quantic-dark text-white font-sans antialiased selection:bg-quantic-teal/30 selection:text-quantic-teal min-h-screen relative;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight uppercase font-black;
+  }
+}
+
+@layer components {
+  .floating-cta {
+    @apply fixed bottom-8 right-8 z-[100] flex flex-col gap-3;
+  }
+  .hero-gradient {
+    background: linear-gradient(135deg, #0A191E 0%, #0076B6 100%);
+  }
+
+  .btn-quantic {
+    @apply bg-quantic-teal text-white font-black uppercase text-[11px] sm:text-xs tracking-[0.2em] px-8 py-4 transition-all duration-500 hover:bg-linear-to-r hover:from-quantic-teal hover:to-quantic-blue shadow-quantic-premium active:scale-95;
+  }
+
+  .industrial-grid {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), 
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .carbon-pattern {
+    background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .btn-primary {
+    @apply bg-quantic-amber text-black font-bold uppercase text-[10px] sm:text-xs tracking-[0.2em] px-8 py-4 hover:bg-white transition-all duration-300 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-white/5 border border-white/10 text-white font-bold uppercase text-[10px] sm:text-xs tracking-[0.2em] px-8 py-4 hover:bg-white/10 transition-all duration-300 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border border-quantic-amber text-quantic-amber font-bold uppercase text-[10px] sm:text-xs tracking-[0.2em] px-6 py-2 hover:bg-quantic-amber hover:text-black transition-all duration-300;
+  }
+}
+
+.text-gradient {
+  @apply bg-linear-to-r from-white via-white to-quantic-amber bg-clip-text text-transparent;
+}
+
+.hover-glow {
+  @apply transition-all duration-500 hover:shadow-[0_0_20px_rgba(245,158,11,0.1)] hover:border-quantic-amber/40;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}

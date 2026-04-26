@@ -1,0 +1,82 @@
+{
+  "entities": {
+    "News": {
+      "title": "News Article",
+      "description": "A news article/post for the portal",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "content": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "authorName": { "type": "string" },
+        "isHighlight": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["published", "draft", "desativado"] },
+        "authorId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "publishedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "content", "status", "createdAt"]
+    },
+    "Chat": {
+      "title": "Chat Session",
+      "description": "A support chat session between a user and consultants",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "status": { "type": "string", "enum": ["waiting", "active", "resolved"] },
+        "lastMessage": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "status", "createdAt"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "An individual message within a chat",
+      "type": "object",
+      "properties": {
+        "chatId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderRole": { "type": "string", "enum": ["user", "consultant"] },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["chatId", "senderId", "senderRole", "text", "createdAt"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Extended user information and roles",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "consultant", "redator", "admin"] },
+        "status": { "type": "string", "enum": ["PENDENTE", "ACTIVO", "BLOQUEADO", "ELIMINADO"] },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "role", "status"]
+    }
+  },
+  "firestore": {
+    "news": {
+      "schema": "News",
+      "description": "Collection of news articles"
+    },
+    "chats": {
+      "schema": "Chat",
+      "description": "Collection of active and past support chats"
+    },
+    "chats/{chatId}/messages": {
+      "schema": "ChatMessage",
+      "description": "Messages within a specific chat"
+    },
+    "profiles": {
+      "schema": "UserProfile",
+      "description": "User profiles with RBAC roles"
+    }
+  }
+}
