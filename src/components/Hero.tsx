@@ -46,7 +46,7 @@ export const Hero = () => {
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
             <button className="border border-white/20 text-white px-10 py-5 font-display font-bold text-sm bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-quantic-blue transition-colors">
-              Explorar Ecossistema
+              Foco Exclusivo em Angola & África
             </button>
           </div>
         </motion.div>
