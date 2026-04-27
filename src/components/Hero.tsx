@@ -24,10 +24,7 @@ export const Hero = () => {
           transition={{ duration: 0.8 }}
           className="max-w-4xl"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-10">
-            <Zap size={14} className="text-quantic-teal fill-quantic-teal" />
-            <span className="text-[11px] font-bold uppercase tracking-widest text-quantic-teal">Foco Exclusivo em Angola & África</span>
-          </div>
+         
           
           <h1 className="text-5xl md:text-7xl lg:text-[88px] font-bold mb-8 leading-[1.05] tracking-tighter text-white">
             Da Tradição à <br />
